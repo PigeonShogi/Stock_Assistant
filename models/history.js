@@ -3,7 +3,7 @@
 module.exports = (sequelize, DataTypes) => {
   const History = sequelize.define('History', {}, {})
   History.associate = function (models) {
-    History.belongsTO(models.Stock, { foreignKey: 'StockId' })
+    // History.belongsTO(models.Stock, { foreignKey: 'StockId' })
   }
   History.init({
     price: DataTypes.NUMBER
