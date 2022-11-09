@@ -1,4 +1,4 @@
-const { Stock } = require('../models')
+const { History, Stock } = require('../models')
 
 module.exports = {
   getStocks: async function () {
@@ -7,5 +7,11 @@ module.exports = {
       raw: true
     })
     return stocks
+  },
+  storePrice: async function (price, stockId) {
+    await History.create({
+      price,
+      StockId: stockId
+    })
   }
 }

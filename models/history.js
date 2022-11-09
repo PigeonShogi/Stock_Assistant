@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     // History.belongsTO(models.Stock, { foreignKey: 'StockId' })
   }
   History.init({
-    price: DataTypes.NUMBER
+    price: DataTypes.DECIMAL(6, 2),
+    StockId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'History',
