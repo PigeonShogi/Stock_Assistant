@@ -16,7 +16,6 @@ module.exports = {
   },
   showPrices: async function () {
     const prices = await History.findAll({
-      limit: 10,
       attributes: ['price'],
       include: [{
         model: Stock,
@@ -24,7 +23,8 @@ module.exports = {
       }],
       nest: true,
       raw: true,
-      group: ''
+      limit: 10,
+      order: [['created_at', 'DESC']]
     })
     return (prices)
   }
