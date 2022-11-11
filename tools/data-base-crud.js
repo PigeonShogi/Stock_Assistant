@@ -13,5 +13,16 @@ module.exports = {
       price,
       StockId: stockId
     })
+  },
+  showPrices: async function () {
+    const prices = await History.findAll({
+      attributes: ['price'],
+      include: [{
+        model: Stock,
+        attributes: ['name']
+      }],
+      raw: true
+    })
+    console.log(prices)
   }
 }

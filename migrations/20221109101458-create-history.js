@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      stock_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       price: {
         allowNull: false,
         type: Sequelize.DECIMAL(6, 2)

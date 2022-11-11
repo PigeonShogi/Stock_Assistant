@@ -1,5 +1,4 @@
 'use strict'
-
 module.exports = (sequelize, DataTypes) => {
   const Stock = sequelize.define('Stock', {}, {})
   Stock.associate = function (models) {
@@ -8,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   Stock.init({
     code: DataTypes.STRING,
     name: DataTypes.STRING
-  }, {
+  },
+  {
     sequelize,
     modelName: 'Stock',
     tableName: 'Stocks',
