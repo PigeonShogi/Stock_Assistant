@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon app.js",
+    "schedule": "node tools/schedule.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,6 +17,7 @@
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "mysql2": "^2.3.3",
+    "node-schedule": "^2.1.0",
     "selenium-webdriver": "^4.5.0",
     "sequelize": "^6.25.3",
     "sequelize-cli": "^6.5.2"
