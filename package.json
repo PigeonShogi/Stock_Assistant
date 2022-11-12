@@ -7,6 +7,8 @@
     "start": "node index.js",
     "dev": "nodemon app.js",
     "schedule": "node tools/schedule.js",
+    "pm2-startup": "pm2 startup",
+    "pm2-off":"pm2 unstartup launch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
