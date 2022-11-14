@@ -2,21 +2,20 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('Stocks', {
+    await queryInterface.createTable('Dividends', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      code: {
+      ten_year_avg: {
         allowNull: false,
-        type: Sequelize.STRING,
-        unique: true
+        type: Sequelize.DECIMAL(8, 4)
       },
-      name: {
+      stock_id: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       created_at: {
         allowNull: false,
@@ -29,6 +28,6 @@ module.exports = {
     })
   },
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('Stocks')
+    await queryInterface.dropTable('Dividends')
   }
 }

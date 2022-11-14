@@ -4,6 +4,7 @@
       <th scope="col">股票代號</th>
       <th scope="col">商品</th>
       <th scope="col">股價</th>
+      <th scope="col">現價價值比（愈低愈好）</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
       <th scope="row">{{this.Stock.code}}</th>
       <td>{{this.Stock.name}}</td>
       <td>{{this.price}}</td>
+      <td>{{this.price}}％</td>
     </tr>
     {{/each}}
   </tbody>

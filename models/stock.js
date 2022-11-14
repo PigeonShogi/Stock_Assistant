@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Stock = sequelize.define('Stock', {}, {})
   Stock.associate = function (models) {
     Stock.hasMany(models.History, { foreignKey: 'StockId' })
+    Stock.hasMany(models.Dividend, { foreignKey: 'StockId' })
   }
   Stock.init({
     code: DataTypes.STRING,

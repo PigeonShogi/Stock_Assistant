@@ -18,4 +18,6 @@ async function browserAutomation (callback, messageString) {
   } catch (err) { console.error(err) }
 }
 
+browserAutomation(crawler.getDividendCashFlow, '測試中')
+
 module.exports = browserAutomation
