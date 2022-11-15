@@ -2,10 +2,10 @@ require('dotenv').config()
 const axios = require('axios')
 const FormData = require('form-data')
 
-function lineNotify () {
+function lineNotify (messageString) {
   const token = `Bearer ${process.env.LINE_TOKEN}`
   const formData = new FormData()
-  formData.append('message', '股價更新完畢。來看看最近哪一檔存股標的比較划算吧！')
+  formData.append('message', messageString)
   formData.append('stickerPackageId', '6362')
   formData.append('stickerId', '11087925')
   const headers = Object.assign({

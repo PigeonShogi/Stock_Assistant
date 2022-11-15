@@ -1,7 +1,6 @@
 require('dotenv').config()
 const { Builder } = require('selenium-webdriver')
 const { disableGpu, headless, imageOff, shmUsage } = require('./config/chrome-options')
-const crawler = require('./tools/crawler')
 const dbCRUD = require('./tools/data-base-crud')
 const lineNotify = require('./tools/line-notify')
 
@@ -17,7 +16,5 @@ async function browserAutomation (callback, messageString) {
     await driver.quit()
   } catch (err) { console.error(err) }
 }
-
-browserAutomation(crawler.getDividendCashFlow, '測試中')
 
 module.exports = browserAutomation

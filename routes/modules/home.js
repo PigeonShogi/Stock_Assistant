@@ -4,8 +4,8 @@ const dbCRUD = require('../../tools/data-base-crud')
 
 router.get('/stocks', async (req, res) => {
   try {
-    const prices = await dbCRUD.showPrices()
-    res.render('stocks', { prices })
+    const stocks = await dbCRUD.showPrices()
+    res.render('stocks', { stocks })
   } catch (err) { console.error(err) }
 })
 

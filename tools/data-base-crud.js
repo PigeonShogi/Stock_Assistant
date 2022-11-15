@@ -9,32 +9,42 @@ module.exports = {
     })
     return stocks
   },
-  // 將爬蟲取得的股價存入資料庫
+  // 將爬蟲取得的股價更新至資料庫
   storePrice: async function (price, stockId) {
-    await History.create({
-      price,
-      StockId: stockId
-    })
+    await History.update(
+      { price },
+      { where: { StockId: stockId } }
+    )
   },
   // 將爬蟲取得的十年股利平均更新至資料庫
-  storeDividendAvg: async function (codeString, tenYearAvg) {
+  storeDividendAvg: async function (stockId, tenYearAvg) {
     await Dividend.update(
       { tenYearAvg },
-      { where: { code: codeString } })
+      { where: { StockId: stockId } }
+    )
   },
   // For GET /stocks 取出資料傳給前端。
   showPrices: async function () {
-    const prices = await History.findAll({
-      attributes: ['price'],
+    const stocks = await Stock.findAll({
+      attributes: ['name', 'code'],
       include: [{
-        model: Stock,
-        attributes: ['name', 'code']
-      }],
+        model: History,
+        attributes: ['price']
+      },
+      {
+        model: Dividend,
+        attributes: ['tenYearAvg']
+      }
+      ],
       nest: true,
       raw: true,
-      limit: 10,
-      order: [['created_at', 'DESC']]
+      order: [['code', 'ASC']]
     })
-    return (prices)
+    stocks.forEach(stock => {
+      stock.stockValue20Y = stock.Dividends.tenYearAvg * 20
+      stock.priceValue = ((stock.Histories.price / stock.stockValue20Y) * 100).toFixed(4)
+    })
+    console.log(stocks)
+    return (stocks)
   }
 }

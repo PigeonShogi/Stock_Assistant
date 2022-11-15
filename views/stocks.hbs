@@ -4,16 +4,20 @@
       <th scope="col">股票代號</th>
       <th scope="col">商品</th>
       <th scope="col">股價</th>
+      <th scope="col">近十年股利平均</th>
+      <th scope="col">持有二十年時的股票價值</th>
       <th scope="col">現價價值比（愈低愈好）</th>
     </tr>
   </thead>
   <tbody>
-    {{#each prices}}
+    {{#each stocks}}
     <tr>
-      <th scope="row">{{this.Stock.code}}</th>
-      <td>{{this.Stock.name}}</td>
-      <td>{{this.price}}</td>
-      <td>{{this.price}}％</td>
+      <th scope="row">{{this.code}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.Histories.price}}</td>
+      <td>{{this.Dividends.tenYearAvg}}</td>
+      <td>{{this.stockValue20Y}}</td>
+      <td>{{this.priceValue}}％</td>
     </tr>
     {{/each}}
   </tbody>
