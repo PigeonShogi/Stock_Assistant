@@ -41,10 +41,11 @@ module.exports = {
       order: [['code', 'ASC']]
     })
     stocks.forEach(stock => {
-      stock.stockValue20Y = stock.Dividends.tenYearAvg * 20
+      stock.stockValue20Y = (stock.Dividends.tenYearAvg * 20).toFixed(4)
       stock.priceValue = ((stock.Histories.price / stock.stockValue20Y) * 100).toFixed(4)
     })
-    console.log(stocks)
+    // 按現價價值比排序，股價愈划算的愈早顯示。
+    stocks.sort((a, b) => (a.priceValue - b.priceValue))
     return (stocks)
   }
 }

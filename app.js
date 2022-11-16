@@ -20,5 +20,5 @@ app.use(express.static('public'))
 app.use(routes)
 
 app.listen(port, () => {
-  console.log(`Stock Crawler app.js is running on http://localhost:${port}`)
+  console.info(`Stock Crawler app.js is running on http://localhost:${port}`)
 })
